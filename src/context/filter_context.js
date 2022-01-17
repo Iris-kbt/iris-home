@@ -40,13 +40,13 @@ export const FilterProvider = ({ children }) => {
   }, [products]);
 
   useEffect(() => {
-    dispatch({ type: FILTER_PRODUCTS });
+    // dispatch({ type: FILTER_PRODUCTS });
     dispatch({ type: SORT_PRODUCTS });
-  }, [state.sort, products, state.filter]);
+  }, [state.sort, products]);
 
-  // useEffect(()=>{
-  //   dispatch({ type: FILTER_PRODUCTS });
-  // },[state.filter])
+  useEffect(() => {
+    dispatch({ type: FILTER_PRODUCTS });
+  }, [state.filter]);
 
   const setGridView = () => {
     dispatch({ type: SET_GRIDVIEW });

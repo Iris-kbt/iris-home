@@ -6,9 +6,12 @@ import { useCartContext } from "../context/cart_context";
 import { FaPlus, FaMinus } from "react-icons/fa";
 
 const AddToCart = ({ product }) => {
+  const { addToCart } = useCartContext();
   const { colors, stock, id } = product;
   const [chosenColor, setChosenColor] = useState(colors[0]);
   const [amount, setAmount] = useState(1);
+
+  console.log(product);
 
   const increase = () => {
     setAmount((old) => (old >= stock ? old : old + 1));
@@ -49,7 +52,11 @@ const AddToCart = ({ product }) => {
             <FaPlus />
           </button>
         </Wrapper2>
-        <Link to="/cart" className="btn">
+        <Link
+          to="/cart"
+          className="btn"
+          onClick={() => addToCart(id, chosenColor, amount, product)}
+        >
           add to cart
         </Link>
       </div>
