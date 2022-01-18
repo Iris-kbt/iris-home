@@ -3,15 +3,13 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { FaCheck } from "react-icons/fa";
 import { useCartContext } from "../context/cart_context";
-import { FaPlus, FaMinus } from "react-icons/fa";
+import AmountButtons from "./AmountButtons";
 
 const AddToCart = ({ product }) => {
   const { addToCart } = useCartContext();
   const { colors, stock, id } = product;
   const [chosenColor, setChosenColor] = useState(colors[0]);
   const [amount, setAmount] = useState(1);
-
-  console.log(product);
 
   const increase = () => {
     setAmount((old) => (old >= stock ? old : old + 1));
@@ -43,15 +41,11 @@ const AddToCart = ({ product }) => {
         </div>
       </div>
       <div className="btn-container">
-        <Wrapper2 className="amount-btns">
-          <button className="amount-btn" onClick={decrease}>
-            <FaMinus />
-          </button>
-          <h2 className="amount">{amount}</h2>
-          <button className="amount-btn" onClick={increase}>
-            <FaPlus />
-          </button>
-        </Wrapper2>
+        <AmountButtons
+          increase={increase}
+          decrease={decrease}
+          amount={amount}
+        />
         <Link
           to="/cart"
           className="btn"
@@ -108,31 +102,6 @@ const Wrapper = styled.section`
     margin-top: 1rem;
     width: 140px;
     text-align: center;
-  }
-`;
-
-const Wrapper2 = styled.div`
-  display: grid;
-  width: 140px;
-  justify-items: center;
-  grid-template-columns: repeat(3, 1fr);
-  align-items: center;
-  h2 {
-    margin-bottom: 0;
-  }
-  button {
-    background: transparent;
-    border-color: transparent;
-    cursor: pointer;
-    padding: 1rem 0;
-    width: 2rem;
-    height: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  h2 {
-    margin-bottom: 0;
   }
 `;
 
