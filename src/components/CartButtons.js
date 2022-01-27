@@ -4,11 +4,12 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useProductsContext } from "../context/products_context";
 import { useCartContext } from "../context/cart_context";
-import { useUserContext } from "../context/user_context";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const CartButtons = () => {
   const { closeSidebar } = useProductsContext();
-  const { totalItems } = useCartContext();
+  const { totalItems, clearCart } = useCartContext();
+  const { loginWithRedirect, logout, isAuthenticated } = useAuth0();
 
   return (
     <Wrapper className="cart-btn-wrapper">
@@ -19,9 +20,21 @@ const CartButtons = () => {
           <span className="cart-value">{totalItems}</span>
         </span>
       </Link>
-      <button className="auth-btn">
-        Login <FaUserPlus />
-      </button>
+      {!isAuthenticated ? (
+        <button className="auth-btn" onClick={loginWithRedirect}>
+          Login <FaUserPlus />
+        </button>
+      ) : (
+        <button
+          className="auth-btn"
+          onClick={() => {
+            clearCart();
+            logout({ returnTo: window.location.origin });
+          }}
+        >
+          Logout <FaUserMinus />
+        </button>
+      )}
     </Wrapper>
   );
 };

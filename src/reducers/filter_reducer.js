@@ -1,4 +1,3 @@
-import { act } from "@testing-library/react";
 import {
   LOAD_PRODUCTS,
   SET_LISTVIEW,

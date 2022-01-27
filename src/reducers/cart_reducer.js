@@ -5,7 +5,6 @@ import {
   REMOVE_CART_ITEM,
   TOGGLE_CART_ITEM_AMOUNT,
 } from "../actions";
-import AddToCart from "../components/AddToCart";
 
 const cart_reducer = (state, action) => {
   switch (action.type) {
