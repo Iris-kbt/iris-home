@@ -57,7 +57,7 @@ const Wrapper = styled.section`
   .submit-btn {
     font-size: 1rem;
     padding: 0.5rem 1rem;
-    border: 1px solid var(--clr-grey-5);
+    border: 1px solid var(--clr-primary-7);
   }
   .form-input {
     border-right: none;
@@ -74,7 +74,7 @@ const Wrapper = styled.section`
     text-transform: capitalize;
   }
   .submit-btn {
-    background: var(--clr-primary-5);
+    background: var(--clr-primary-7);
     text-transform: capitalize;
     letter-spacing: var(--spacing);
     cursor: pointer;
