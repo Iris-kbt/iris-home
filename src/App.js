@@ -35,7 +35,7 @@ function App() {
           <Route path="/cart" exact>
             <Cart />
           </Route>
-          <PrivateRoute path="/checkoussssst" exact>
+          <PrivateRoute path="/checkout" exact>
             <Checkout />
           </PrivateRoute>
           <Route path="*">
