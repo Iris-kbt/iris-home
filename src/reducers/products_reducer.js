@@ -21,13 +21,13 @@ const products_reducer = (state, action) => {
       return { ...state, productsLoading: true };
       break;
     case GET_PRODUCTS_SUCCESS:
-      const featuredProducts = action.payload?.data?.filter(
+      const featuredProducts = action.payload.filter(
         (product) => product.featured === true
       );
       return {
         ...state,
         productsLoading: false,
-        products: action.payload?.data,
+        products: action.payload,
         featuredProducts,
       };
       break;
@@ -45,7 +45,7 @@ const products_reducer = (state, action) => {
       return {
         ...state,
         singleProductLoading: false,
-        singleProduct: action.payload?.data,
+        singleProduct: action.payload,
       };
       break;
     case GET_SINGLE_PRODUCT_ERROR:
